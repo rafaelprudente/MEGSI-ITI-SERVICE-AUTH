@@ -1,6 +1,9 @@
 package pt.iti.umdrive.controller;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +18,14 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/token")
-    public String token(@RequestHeader String username, @RequestHeader String password) {
-        return authService.generateJwtToken(UserModel.builder().username(username).password(password).build());
+    public ResponseEntity<String> token(@RequestHeader String username, @RequestHeader String password) {
+        return ResponseEntity.ok(authService.generateJwtToken(UserModel.builder().username(username).password(password).build()));
+    }
+
+    @Hidden
+    @GetMapping("/validate")
+    public ResponseEntity<String> validate() {
+        return ResponseEntity.ok("");
     }
 
     /*
