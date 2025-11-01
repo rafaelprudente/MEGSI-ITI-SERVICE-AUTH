@@ -19,5 +19,6 @@ public class UserModel {
     private UUID id;
     private String username;
     private String password;
+    @Builder.Default
     private List<RoleModel> roles = new ArrayList<>();
 }
