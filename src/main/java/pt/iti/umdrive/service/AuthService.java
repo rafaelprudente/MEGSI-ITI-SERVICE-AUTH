@@ -16,7 +16,7 @@ import pt.iti.umdrive.security.JwtUtil;
 @RequiredArgsConstructor
 public class AuthService {
     private final UserRepository userRepository;
-    private final PasswordEncoder encoder;
+    private final PasswordEncoder passwordEncoder;
     private final JwtUtil jwtUtils;
     private final AuthenticationManager authenticationManager;
 

@@ -1,6 +1,7 @@
 package pt.iti.umdrive.security;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,6 +22,9 @@ public class WebSecurityConfig {
     private final CustomUserDetailsService userDetailsService;
     private final AuthEntryPointJwt unauthorizedHandler;
     private final AuthTokenFilter authTokenFilter;
+
+    @Value("${request.matchers.to.allow}")
+    private String requestMatchersToAllow;
 
     @Bean
     public AuthenticationManager authenticationManager(
@@ -48,7 +52,7 @@ public class WebSecurityConfig {
                 )
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("/api/v1/auth/token/**", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
+                                .requestMatchers(requestMatchersToAllow.split(",")).permitAll()
                                 .anyRequest().authenticated()
                 );
 

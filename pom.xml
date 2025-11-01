@@ -11,9 +11,9 @@
 	</parent>
 
 	<groupId>pt.iti</groupId>
-	<artifactId>umdrive</artifactId>
+	<artifactId>umdrive-service-auth</artifactId>
 	<version>1.0.0</version>
-	<name>umdrive</name>
+	<name>umdrive-service-auth</name>
 	<description>Demo project show the infrastructure for information systems</description>
 
 	<properties>
@@ -38,6 +38,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springdoc</groupId>
