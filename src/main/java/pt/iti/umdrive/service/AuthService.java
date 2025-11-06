@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pt.iti.umdrive.entities.UserEntity;
+import pt.iti.umdrive.model.AuthorityModel;
 import pt.iti.umdrive.model.UserModel;
 import pt.iti.umdrive.repository.UserRepository;
 import pt.iti.umdrive.security.JwtUtil;
@@ -28,10 +29,9 @@ public class AuthService {
                 )
         );
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-
-        UserEntity ue = userRepository.findByUsername(userDetails.getUsername());
-
-        userModel.setId(ue.getId());
+        UserEntity userEntity = userRepository.findByUsername(userDetails.getUsername());
+        userModel.setId(userEntity.getDetails().getId());
+        userModel.setAuthorities(userEntity.getAuthorities().stream().map(a -> AuthorityModel.builder().name(a.getAuthority()).build()).toList());
 
         return jwtUtils.generateToken(userModel);
     }

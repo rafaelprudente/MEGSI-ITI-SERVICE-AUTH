@@ -2,40 +2,42 @@ package pt.iti.umdrive.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Getter
 @Setter
+@Builder
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "users")
 public class UserEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
-    @Column(name = "Username", unique = true)
+    @Column(name = "username", nullable = false)
     private String username;
-    @Column(name = "Password")
+    @Column(name = "password", nullable = false)
     private String password;
+    @Column(name = "enabled", nullable = false)
+    private boolean enabled;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "userRoles",
-            joinColumns = @JoinColumn(name = "userId"))
-    private List<RoleEntity> roleEntities = new ArrayList<>();
+    @OneToOne(optional = false, orphanRemoval = true)
+    @JoinColumn(name = "username", nullable = false, unique = true)
+    private UserDetailEntity details;
+
+    @Builder.Default
+    @JoinColumn(name = "username")
+    @OneToMany(orphanRemoval = true)
+    private Set<AuthorityEntity> authorities = new LinkedHashSet<>();
 }

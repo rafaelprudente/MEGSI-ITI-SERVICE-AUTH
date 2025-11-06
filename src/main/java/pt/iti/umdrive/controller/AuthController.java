@@ -27,21 +27,4 @@ public class AuthController {
     public ResponseEntity<String> validate() {
         return ResponseEntity.ok("");
     }
-
-    /*
-    @PostMapping("/signup")
-    public String registerUser(@RequestBody UserEntity userEntity) {
-        if (userRepository.existsByUsername(userEntity.getUsername())) {
-            return "Error: Username is already taken!";
-        }
-        // Create new user's account
-        UserEntity newUserEntity = new UserEntity(
-                null,
-                userEntity.getUsername(),
-                encoder.encode(userEntity.getPassword())
-        );
-        userRepository.save(newUserEntity);
-        return "User registered successfully!";
-    }
-    */
 }

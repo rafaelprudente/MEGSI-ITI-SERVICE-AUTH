@@ -11,7 +11,6 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class RoleModel {
-    private Long id;
+public class AuthorityModel {
     private String name;
 }
