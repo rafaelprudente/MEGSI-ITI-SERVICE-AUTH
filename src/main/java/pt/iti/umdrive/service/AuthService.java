@@ -7,6 +7,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pt.iti.umdrive.entities.UserEntity;
 import pt.iti.umdrive.model.AuthorityModel;
 import pt.iti.umdrive.model.UserModel;
@@ -21,6 +22,7 @@ public class AuthService {
     private final JwtUtil jwtUtils;
     private final AuthenticationManager authenticationManager;
 
+    @Transactional(readOnly = true)
     public String generateJwtToken(UserModel userModel) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
