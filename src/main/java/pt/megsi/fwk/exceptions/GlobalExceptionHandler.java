@@ -1,4 +1,4 @@
-package pt.iti.umdrive.common;
+package pt.megsi.fwk.exceptions;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

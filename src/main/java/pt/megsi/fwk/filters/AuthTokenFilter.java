@@ -1,4 +1,4 @@
-package pt.iti.umdrive.security;
+package pt.megsi.fwk.filters;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -13,6 +13,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import pt.iti.umdrive.service.CustomUserDetailsService;
+import pt.megsi.fwk.utils.JwtUtil;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package pt.iti.umdrive.security;
+package pt.megsi.fwk.utils;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -56,7 +56,6 @@ public class JwtUtil {
                 .getSubject();
     }
 
-    // Validate JWT token
     public boolean validateJwtToken(String token) {
         try {
             Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);

@@ -12,7 +12,7 @@ import pt.iti.umdrive.entities.UserEntity;
 import pt.iti.umdrive.model.AuthorityModel;
 import pt.iti.umdrive.model.UserModel;
 import pt.iti.umdrive.repository.UserRepository;
-import pt.iti.umdrive.security.JwtUtil;
+import pt.megsi.fwk.utils.JwtUtil;
 
 @Service
 @RequiredArgsConstructor
