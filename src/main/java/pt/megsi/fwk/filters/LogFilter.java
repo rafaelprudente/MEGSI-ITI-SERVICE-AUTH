@@ -12,8 +12,8 @@ import java.io.IOException;
 
 @Slf4j
 @RequiredArgsConstructor
-public class LogFilter { //extends OncePerRequestFilter {
-    //@Override
+public class LogFilter extends OncePerRequestFilter {
+    @Override
     protected void doFilterInternal(
             HttpServletRequest request,
             HttpServletResponse response,

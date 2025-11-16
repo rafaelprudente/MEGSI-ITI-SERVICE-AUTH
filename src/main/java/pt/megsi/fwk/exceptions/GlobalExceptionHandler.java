@@ -13,13 +13,7 @@ import org.springframework.web.context.request.WebRequest;
 public class GlobalExceptionHandler {
     @ExceptionHandler(BadCredentialsException.class)
     public ResponseEntity<String> handleBadCredentialsException(BadCredentialsException ex, WebRequest request) {
-        log.error("Bad credentials exception: {} - username: [{}] - password: [{}] - returning code: [{}]",
-                ex.getMessage(),
-                request.getHeader("username"),
-                request.getHeader("password"),
-                HttpStatus.UNAUTHORIZED,
-                ex);
-
+        log.error("Bad credentials exception: {}", ex.getMessage());
         return new ResponseEntity<>("", HttpStatus.UNAUTHORIZED);
     }
 

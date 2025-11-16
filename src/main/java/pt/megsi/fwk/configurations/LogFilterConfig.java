@@ -6,9 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import pt.megsi.fwk.filters.LogFilter;
 
-//@Configuration
+@Configuration
 public class LogFilterConfig {
-    /*
     @Bean
     public FilterRegistrationBean<LogFilter> responseCaptureFilter() {
         FilterRegistrationBean<LogFilter> registration =
@@ -22,5 +21,4 @@ public class LogFilterConfig {
 
         return registration;
     }
-    */
 }
