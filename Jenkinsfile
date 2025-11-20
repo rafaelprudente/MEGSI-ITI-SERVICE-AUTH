@@ -1,8 +1,8 @@
 pipeline {
     agent any
-        tools {
-            maven 'MVN'
-    }
+
+    tools { maven 'MVN' }
+    
     stages {
         stage('Create settings.xml') {
             steps {
@@ -36,7 +36,7 @@ pipeline {
         stage('Build image') {
             steps {
                 script {
-                    app = docker.build("iti-service-auth:latest")
+                    def app = docker.build("iti-service-auth:latest", ".")
                 }
             }
         }
