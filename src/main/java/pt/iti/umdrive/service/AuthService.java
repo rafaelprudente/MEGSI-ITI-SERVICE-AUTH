@@ -7,10 +7,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pt.iti.umdrive.entities.UserEntity;
-import pt.iti.umdrive.model.AuthorityModel;
-import pt.iti.umdrive.model.UserModel;
-import pt.iti.umdrive.repository.UserRepository;
+import pt.megsi.fwk.entities.UserEntity;
+import pt.megsi.fwk.models.AuthorityModel;
+import pt.megsi.fwk.models.UserModel;
+import pt.megsi.fwk.repositories.UserRepository;
 import pt.megsi.fwk.utils.JwtUtil;
 
 @Service

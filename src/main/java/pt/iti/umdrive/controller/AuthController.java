@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pt.iti.umdrive.model.UserModel;
 import pt.iti.umdrive.service.AuthService;
+import pt.megsi.fwk.models.UserModel;
 
 @RestController
 @RequestMapping("/api/v1/auth")
