@@ -33,8 +33,12 @@ pipeline {
                 sh 'mvn -s settings.xml -B -DskipTests clean package'
             }
         }
-        stage('Build image') {         
-            app = docker.build("iti-service-auth:latest")    
+        stage('Build image') {
+            steps {
+                script {
+                    app = docker.build("iti-service-auth:latest")
+                }
+            }
         }
     }
 }
