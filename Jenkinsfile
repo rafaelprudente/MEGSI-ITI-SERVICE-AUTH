@@ -11,7 +11,7 @@ pipeline {
         stage('Create settings.xml') {
             steps {
                 withCredentials([usernamePassword(
-                    credentialsId: '9402b541-33c9-453b-a7eb-90d7cb999f5e',
+                    credentialsId: 'OneDev',
                     usernameVariable: 'MVN_USER',
                     passwordVariable: 'MVN_PASS'
                 )]) {
