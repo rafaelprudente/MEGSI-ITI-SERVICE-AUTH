@@ -33,11 +33,15 @@ pipeline {
                 sh 'mvn -s settings.xml -B -DskipTests clean package'
             }
         }
-        stage('Build image') {
+        stage('Build Image') {
             steps {
-                script {
-                    def app = docker.build("iti-service-auth:latest", ".")
-                }
+              docker.withRegistry('http://artifactory', '9402b541-33c9-453b-a7eb-90d7cb999f5e') {
+                  def imageVersion = docker.build("iti-service-auth:${env.BUILD_ID}", ".")
+                  def imageLatest = docker.build("iti-service-auth:latest", ".")
+
+                  imageVersion.push()
+                  imageLatest.push()
+              }
             }
         }
     }
