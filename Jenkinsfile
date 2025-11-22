@@ -16,14 +16,14 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                    image = docker.build("uminho/iti-service-auth:latest", ".")
+                    image = docker.build("uminho/${IMAGE_NAME}:latest", ".")
                 }
             }
         }
         stage('Push Image') {
             steps {
                 script {
-                    docker.withRegistry('http://artifactory:6610', 'OneDev') {
+                    docker.withRegistry('http://192.168.56.213:6610', 'OneDev') {
                         image.push()
                     }
                 }
