@@ -3,7 +3,9 @@ pipeline {
 
     tools { maven 'MVN' }
 
-    def image
+    environment {
+        image
+    }
 
     stages {
         stage('Create settings.xml') {
