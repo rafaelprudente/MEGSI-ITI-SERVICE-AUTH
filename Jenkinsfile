@@ -49,7 +49,7 @@ pipeline {
         stage('Push Image') {
             steps {
                 script {
-                    docker.withRegistry('http://artifactory:6610', '9402b541-33c9-453b-a7eb-90d7cb999f5e') {
+                    docker.withRegistry('http://artifactory:6610', 'OneDev') {
                         image.push()
                         image.push("latest")
                     }
