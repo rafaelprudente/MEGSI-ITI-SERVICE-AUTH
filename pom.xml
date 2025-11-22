@@ -77,19 +77,19 @@
     <repositories>
         <repository>
             <id>onedev</id>
-            <url>http://192.168.56.213:6610/UMINHO/~maven</url>
+            <url>http://artifactory:6610/UMINHO/~maven</url>
         </repository>
     </repositories>
 
     <distributionManagement>
         <repository>
             <id>onedev</id>
-            <url>http://192.168.56.213:6610/UMINHO/~maven</url>
+            <url>http://artifactory:6610/UMINHO/~maven</url>
         </repository>
 
         <snapshotRepository>
             <id>onedev</id>
-            <url>http://192.168.56.213:6610/UMINHO/~maven</url>
+            <url>http://artifactory:6610/UMINHO/~maven</url>
         </snapshotRepository>
     </distributionManagement>
 
