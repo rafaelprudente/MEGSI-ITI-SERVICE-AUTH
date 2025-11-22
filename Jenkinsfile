@@ -3,10 +3,6 @@ pipeline {
 
     tools { maven 'MVN' }
 
-    environment {
-        image = ""
-    }
-
     stages {
         stage('Create settings.xml') {
             steps {
