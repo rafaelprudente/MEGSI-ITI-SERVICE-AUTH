@@ -42,7 +42,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                    def image = docker.build("UMINHO/iti-service-auth:${env.BUILD_ID}", ".")
+                    image = docker.build("UMINHO/iti-service-auth:${env.BUILD_ID}", ".")
                 }
             }
         }
