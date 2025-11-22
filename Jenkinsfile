@@ -2,7 +2,10 @@ pipeline {
     agent none
 
     tools { maven 'MVN' }
-    
+
+    def imageLatest
+    def imageVersion
+
     stages {
         stage('Create settings.xml') {
             steps {
@@ -28,7 +31,7 @@ pipeline {
                 </settings>'''
             }
         }
-        stage('Build') {
+        stage('Build Package') {
             steps {
                 sh 'mvn -s settings.xml -B -DskipTests clean package'
             }
@@ -36,10 +39,15 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
+                    imageLatest = docker.build("UMINHO/iti-service-auth:latest", ".")
+                    imageVersion = docker.build("UMINHO/iti-service-auth:${env.BUILD_ID}", ".")
+                }
+            }
+        }
+        stage('Push Image') {
+            steps {
+                script {
                     docker.withRegistry('http://artifactory:6610', '9402b541-33c9-453b-a7eb-90d7cb999f5e') {
-                        def imageVersion = docker.build("UMINHO/iti-service-auth:${env.BUILD_ID}", ".")
-                        def imageLatest = docker.build("UMINHO/iti-service-auth:latest", ".")
-
                         imageVersion.push()
                         imageLatest.push()
                     }
