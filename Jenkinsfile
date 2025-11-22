@@ -4,7 +4,7 @@ pipeline {
     tools { maven 'MVN' }
 
     environment {
-        image
+        image = ""
     }
 
     stages {
