@@ -38,16 +38,6 @@ pipeline {
                 }
             }
         }
-        stage('Maven Informations 1') {
-            steps {
-                sh 'mvn help:effective-settings'
-            }
-        }
-        stage('Maven Informations 2') {
-            steps {
-                sh 'mvn -X | grep artifactory'
-            }
-        }
         stage('Build Package') {
             steps {
                 sh 'mvn -s settings.xml -B -DskipTests clean package'
