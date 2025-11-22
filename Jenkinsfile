@@ -3,6 +3,10 @@ pipeline {
 
     tools { maven 'MVN' }
 
+    environment {
+        IMAGE_NAME = "iti-service-auth"
+    }
+
     stages {
         stage('Create settings.xml') {
             steps {
@@ -42,7 +46,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                    image = docker.build("uminho/iti-service-auth:${env.BUILD_ID}", ".")
+                    image = docker.build("uminho/iti-service-auth:latest", ".")
                 }
             }
         }
@@ -51,7 +55,6 @@ pipeline {
                 script {
                     docker.withRegistry('http://artifactory:6610', 'OneDev') {
                         image.push()
-                        image.push("latest")
                     }
                 }
             }
