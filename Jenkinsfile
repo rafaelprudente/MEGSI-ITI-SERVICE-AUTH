@@ -38,6 +38,11 @@ pipeline {
                 }
             }
         }
+        stage('Info') {
+            steps {
+                sh 'mvn help:evaluate -Dexpression=settings.localRepository'
+            }
+        }
         stage('Build Package') {
             steps {
                 sh 'mvn -s settings.xml -B -DskipTests clean package'
